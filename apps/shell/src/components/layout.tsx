@@ -6,11 +6,30 @@ import {
   appNetworkBasename,
   appPostingBasename,
 } from "../constants/prefix";
-import { Icons } from "@career-up/ui-kit";
+import { Button, Icons } from "@career-up/ui-kit";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const globalPrefix = `global-nav`;
 
 const Layout = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  const handleLogin = async () => {
+    await loginWithRedirect({
+      appState: {
+        returnTo: "/",
+      },
+    });
+  };
+
+  const handleLogout = async () => {
+    await logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+  };
+
   const stylesPrefix = (className?: string) =>
     className ? `${globalPrefix}-${className}` : globalPrefix;
 
@@ -46,6 +65,21 @@ const Layout = () => {
             </svg>
             <span>Career Up</span>
           </Link>
+
+          {!isAuthenticated && (
+            <div style={{ marginLeft: 20 }}>
+              <Button onClick={handleLogin}>Login</Button>
+            </div>
+          )}
+          {isAuthenticated && (
+            <div style={{ marginLeft: 20 }}>
+              <Button onClick={handleLogout}>Logout</Button>
+            </div>
+          )}
+          {/* <div className={stylesPrefix("search")}>
+            <input type="text" />
+          </div> */}
+
           <nav className={stylesPrefix("nav")}>
             <ul className={stylesPrefix("items")}>
               <li className={stylesPrefix("item")}>
@@ -82,9 +116,7 @@ const Layout = () => {
           </nav>
         </div>
       </header>
-      <div className="global-container">
-        <Outlet />
-      </div>
+      <div className="global-container">{isAuthenticated && <Outlet />}</div>
     </div>
   );
 };
