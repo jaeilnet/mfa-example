@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "turbo start:live",
+    "dev:ui-kit": "pnpm --filter @career-up/ui-kit dev",
     "build": "turbo build",
     "serve": "turbo build:start",
     "test": "echo \"Error: no test specified\" && exit 1"
