@@ -79,6 +79,9 @@ module.exports = (_, argv) => ({
         "@career-up/ui-kit": {
           singleton: true,
         },
+        "@career-up/shell-router": {
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({
