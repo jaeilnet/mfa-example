@@ -17,12 +17,12 @@ export default defineConfig({
       fileName: (format) => `shell-router.${format}.js`,
     },
     rollupOptions: {
-      // react-router-dom
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-router-dom"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "react-router-dom": "ReactRouterDOM",
         },
       },
     },

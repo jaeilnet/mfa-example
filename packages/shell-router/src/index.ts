@@ -1,5 +1,7 @@
-function test() {
-  console.log("test");
-}
+import AppRoutingManager from "./components/app-routing-manager";
+import useShellEvent from "./hooks/use-shell-event";
+import { injectFactory } from "./inject";
 
-export { test };
+export { AppRoutingManager, useShellEvent, injectFactory };
+
+export type * from "./types";
