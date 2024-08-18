@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import "@career-up/ui-kit/index.css";
 
-import { Button } from "@career-up/ui-kit";
+import { Button, Icons } from "@career-up/ui-kit";
 
 const App = () => (
   <div className="container">
@@ -11,7 +11,8 @@ const App = () => (
     <div>Framework: react</div>
     <div>Language: TypeScript</div>
     <div>CSS: Empty CSS</div>
-    <Button />
+    <Button>Button</Button>
+    <Icons.Home />
   </div>
 );
 const rootElement = document.getElementById("app");

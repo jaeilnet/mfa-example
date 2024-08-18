@@ -173,3 +173,12 @@ export default defineConfig({
 }
 
 ```
+
+**빌드 watch 모드 사용**
+
+```ts
+// package.json
+scripts :{
+  "dev": "pnpm build --watch",
+}
+```

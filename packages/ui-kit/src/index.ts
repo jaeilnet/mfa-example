@@ -1,3 +1,6 @@
 import "./global.css";
 
-export { default as Button } from "./components/Button";
+import Button from "./components/Button";
+import Icons from "./components/Icons";
+
+export { Button, Icons };
