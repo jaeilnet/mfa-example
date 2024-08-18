@@ -4,9 +4,11 @@
 
 ### 초기세팅 하기
 
-> pnpm init
->
-> corepack use pnpm@8version
+```
+pnpm init
+
+corepack use pnpm@8version
+```
 
 **디렉토리 생성**
 
@@ -77,4 +79,5 @@ turbo.json
 ```
 
 스키마와 하위 마이크로 앱들을 병렬로 실행할 각 명령어들을 세팅해준다.
+
 # mfa-example
