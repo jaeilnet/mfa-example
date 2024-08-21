@@ -40,6 +40,14 @@ const browserRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: `${appEduBasename}/*`,
+        element: (
+          <Suspense fallback="Loading">
+            <AppEduLazy />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
