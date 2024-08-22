@@ -37,6 +37,16 @@ server.post("/posts", (req, res, next) => {
   next();
 });
 
+server.get("/my-network", (req, res) => {
+  res.jsonp({
+    connectionCount: 811,
+    contactCount: 3724,
+    eventCount: 0,
+    pageCount: 0,
+    user: req.user,
+  });
+});
+
 server.use(router);
 server.listen(4000, () => {
   console.log(`JSON Server is Running`);

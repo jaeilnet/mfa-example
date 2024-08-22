@@ -24,6 +24,7 @@ export default function AppEdu() {
       rootElement: wrapperRef.current!,
       basePath: location.pathname.replace(appEduBasename, ""),
     });
+
     isFirstRunRef.current = false;
   }, [location]);
 

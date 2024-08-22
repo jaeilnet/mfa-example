@@ -17,6 +17,10 @@
       "path": "packages/shell-router"
     },
     {
+      "name": "network",
+      "path": "apps/network"
+    },
+    {
       "name": "ui-kit",
       "path": "packages/ui-kit"
     },
