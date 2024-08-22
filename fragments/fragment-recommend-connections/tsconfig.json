@@ -20,15 +20,7 @@
     "noUnusedLocals": true, // Report errors on unused locals
     "noUnusedParameters": true, // Report errors on unused parameters
     "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
-    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement,
-    "paths": {
-      "fragment_recommend_connections/container": [
-        "../../fragments/fragment-recommend-connections/src/containers/recommend-connections-container.tsx"
-      ],
-      "job/fragment-recommend-jobs": [
-        "../job/src/fragments/recommend-jobs-container.tsx"
-      ]
-    }
+    "noFallthroughCasesInSwitch": true // Report errors for fallthrough cases in switch statement
   },
   "include": [
     "src/**/*" // *** The files TypeScript should type check ***

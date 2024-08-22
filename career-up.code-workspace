@@ -25,6 +25,10 @@
       "path": "apps/network"
     },
     {
+      "name": "fragment-recommend-connections",
+      "path": "fragments/fragment-recommend-connections"
+    },
+    {
       "name": "ui-kit",
       "path": "packages/ui-kit"
     },
