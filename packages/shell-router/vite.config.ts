@@ -23,6 +23,7 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "react-router-dom": "ReactRouterDOM",
+          "@auth0/auth0-spa-js": "auth0",
         },
       },
     },

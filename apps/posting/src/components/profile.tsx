@@ -1,5 +1,6 @@
+import { useAuth0Client } from "@career-up/shell-router";
 import { getUser } from "../apis";
-import { useAuth0Client } from "../hooks/use-auth0-client";
+
 import { UserType } from "../types";
 import "./profile.scss";
 

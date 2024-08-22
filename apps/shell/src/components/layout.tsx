@@ -8,10 +8,13 @@ import {
 } from "../constants/prefix";
 import { Button, Icons } from "@career-up/ui-kit";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useShellNavigateListener } from "@career-up/shell-router";
 
 const globalPrefix = `global-nav`;
 
 const Layout = () => {
+  useShellNavigateListener();
+
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const handleLogin = async () => {
