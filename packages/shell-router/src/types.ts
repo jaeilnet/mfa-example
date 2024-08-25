@@ -1,4 +1,5 @@
-import { RouteObject } from "react-router-dom";
+import { type RouteObject } from "react-router-dom";
+import { injectFactory } from "./inject";
 
 export type RouterType = "browser" | "memory";
 
@@ -7,3 +8,5 @@ export interface CreateRouterProps {
   routes: RouteObject[];
   basePath?: string;
 }
+
+export type InjectFuncType = ReturnType<typeof injectFactory>;

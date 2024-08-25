@@ -13,10 +13,10 @@ import {
 import Layout from "./components/layout";
 import Auth0ProviderWithNavigator from "./components/auth0-provider-with-navigator";
 
-const AppPostingLazy = React.lazy(() => import("./components/app-posting"));
-const AppEduLazy = React.lazy(() => import("./components/app-edu"));
-const AppNetworkLazy = React.lazy(() => import("./components/app-network"));
-const AppJobLazy = React.lazy(() => import("./components/app-job"));
+import AppEdu from "./components/app-edu";
+import AppPosting from "./components/app-posting";
+import AppNetwork from "./components/app-network";
+import AppJob from "./components/app-job";
 
 const browserRouter = createBrowserRouter([
   {
@@ -33,35 +33,19 @@ const browserRouter = createBrowserRouter([
       },
       {
         path: `${appPostingBasename}/*`,
-        element: (
-          <Suspense fallback={<div>loading</div>}>
-            <AppPostingLazy />
-          </Suspense>
-        ),
+        element: <AppPosting />,
       },
       {
         path: `${appEduBasename}/*`,
-        element: (
-          <Suspense fallback="Loading">
-            <AppEduLazy />
-          </Suspense>
-        ),
+        element: <AppEdu />,
       },
       {
         path: `${appNetworkBasename}/*`,
-        element: (
-          <Suspense fallback={<div>loading</div>}>
-            <AppNetworkLazy />
-          </Suspense>
-        ),
+        element: <AppNetwork />,
       },
       {
         path: `${appJobBasename}/*`,
-        element: (
-          <Suspense fallback={<div>loading</div>}>
-            <AppJobLazy />
-          </Suspense>
-        ),
+        element: <AppJob />,
       },
     ],
   },

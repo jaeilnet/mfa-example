@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useShellEvent } from "@career-up/shell-router";
+import { type InjectFuncType, useShellEvent } from "@career-up/shell-router";
 import { appPostingBasename } from "../constants/prefix";
-
-import inject from "posting/injector";
+import { importRemote } from "@module-federation/utilities";
 
 const AppPosting = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -21,13 +20,23 @@ const AppPosting = () => {
       return;
     }
 
-    umountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appPostingBasename, ""),
-    });
-
     isFirstRunRef.current = false;
+    importRemote<{ default: InjectFuncType }>({
+      url: "http://localhost:3001",
+      scope: "posting",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    })
+      .then(({ default: inject }) => {
+        umountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appPostingBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [location]);
 
   useEffect(() => umountRef.current, []);

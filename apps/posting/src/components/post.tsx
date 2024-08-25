@@ -1,5 +1,3 @@
-// career-up/apps/posting/src/components/post.tsx
-
 import "./post.scss";
 
 import React from "react";

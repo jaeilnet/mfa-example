@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useShellEvent } from "@career-up/shell-router";
+import { type InjectFuncType, useShellEvent } from "@career-up/shell-router";
 import { appNetworkBasename } from "../constants/prefix";
 
-import inject from "network/injector";
+import { importRemote } from "@module-federation/utilities";
 
 const AppNetWork = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -14,23 +14,32 @@ const AppNetWork = () => {
 
   const isFirstRunRef = useRef<boolean>(true);
 
-  const umountRef = useRef(() => {});
+  const unmountRef = useRef(() => {});
 
   useEffect(() => {
     if (!isFirstRunRef.current) {
       return;
     }
-
-    umountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appNetworkBasename, ""),
-    });
-
     isFirstRunRef.current = false;
+    importRemote<{ default: InjectFuncType }>({
+      url: "http://localhost:3003",
+      scope: "network",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    })
+      .then(({ default: inject }) => {
+        unmountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appNetworkBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [location]);
 
-  useEffect(() => umountRef.current, []);
+  useEffect(() => unmountRef.current, []);
 
   return <div ref={wrapperRef} id="app-network" />;
 };
